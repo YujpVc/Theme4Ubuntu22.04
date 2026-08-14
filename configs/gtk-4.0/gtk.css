@@ -1,0 +1,30 @@
+.navigation-sidebar > row,
+placessidebar .navigation-sidebar > row {
+  transition: none;
+}
+
+.navigation-sidebar > row:hover,
+.navigation-sidebar > row:focus-visible:focus-within,
+placessidebar .navigation-sidebar > row:hover,
+placessidebar .navigation-sidebar > row:focus-visible:focus-within {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+.nautilus-window headerbar button,
+#NautilusFileChooser button,
+filechooser button {
+  transition: none;
+}
+
+.nautilus-window headerbar button:not(:checked):not(:active):hover,
+.nautilus-window headerbar button:not(:checked):not(:active):focus-visible:focus-within,
+#NautilusFileChooser button:not(:checked):not(:active):hover,
+#NautilusFileChooser button:not(:checked):not(:active):focus-visible:focus-within,
+filechooser button:not(:checked):not(:active):hover,
+filechooser button:not(:checked):not(:active):focus-visible:focus-within {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}

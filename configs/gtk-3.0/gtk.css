@@ -1,0 +1,13 @@
+filechooser button,
+#NautilusFileChooser button,
+.csd filechooser button {
+  transition: none;
+}
+
+filechooser button:not(:checked):not(:active):hover,
+#NautilusFileChooser button:not(:checked):not(:active):hover,
+.csd filechooser button:not(:checked):not(:active):hover {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}

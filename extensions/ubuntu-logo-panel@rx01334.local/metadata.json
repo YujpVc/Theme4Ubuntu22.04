@@ -1,0 +1,9 @@
+{
+  "name": "Ubuntu Logo Panel",
+  "description": "Adds the Ubuntu logo to the far left of the top panel.",
+  "uuid": "ubuntu-logo-panel@rx01334.local",
+  "shell-version": [
+    "42"
+  ],
+  "version": 1
+}

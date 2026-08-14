@@ -1,0 +1,35 @@
+/* GTK3 Accent Color Definitions */
+@define-color accent_color #3b82f6;
+@define-color accent_color_hover #3d86ff;
+@define-color accent_color_active #3575dd;
+
+/* Accent color applications */
+switch:checked {
+  background-color: @accent_color;
+}
+
+scale.horizontal > trough > highlight.top {
+  background-color: @accent_color;
+}
+
+button.titlebutton.close {
+  background-color: @accent_color;
+}
+
+button.titlebutton.close:hover {
+  background-color: @accent_color_hover;
+}
+
+button.suggested-action {
+  background-color: @accent_color;
+}
+
+button.suggested-action:hover {
+  background-color: @accent_color_hover;
+}
+
+button.suggested-action:active {
+  background-color: @accent_color_active;
+}
+
+@import url("resource:///org/gnome/theme/gtk.css");

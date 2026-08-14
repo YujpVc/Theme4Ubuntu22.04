@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=plank
+Hidden=false
+NoDisplay=false
+Name=Plank
+Comment=Plank dock
+X-GNOME-Autostart-Delay=2
+X-GNOME-Autostart-enabled=true

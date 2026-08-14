@@ -1,0 +1,8 @@
+{
+    "name": "ForeWMHelper",
+    "description": "Get Foreground Window Info",
+    "uuid": "ForeWMHelper@123456.com",
+    "shell-version": [
+       "42"
+    ]
+}

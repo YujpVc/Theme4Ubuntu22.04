@@ -10,7 +10,7 @@
 - 扩展：`blur-my-shell`、`CoverflowAltTab`、`NetSpeed`、`OpenWeather`、`ubuntu-logo-panel`
 - 顶部栏最左侧：自定义 Ubuntu 图标，点击打开系统设置
 - 快捷键：`Win+Tab` / `Alt+Tab` 都走 Coverflow 切换效果
-- 壁纸：`Minimal-Mojave` 视频动态壁纸，白天/夜晚极简山景循环淡变
+- 壁纸：哲风壁纸“卡通-水面-治愈”视频动态壁纸，循环播放
 
 ## 目录说明
 
@@ -100,4 +100,5 @@
 
 - 若需要持续可见的动画，`install.sh` 还会安装
   `tools/minimal-mojave-live.sh` 和登录自启动条目，使用 `ffplay` 播放
-  `Minimal-Mojave-live.mp4` 作为桌面层。
+  `Minimal-Mojave-live.mp4` 作为桌面层。当前该文件为哲风壁纸
+  “卡通-水面-治愈”，原始分辨率 `2850x1604`。

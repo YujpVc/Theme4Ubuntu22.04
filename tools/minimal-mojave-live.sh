@@ -15,7 +15,7 @@ for _ in $(seq 1 50); do
 done
 
 if [ -n "$wid" ]; then
-    DISPLAY="$DISPLAY" xdotool windowmove "$wid" 0 0 windowsize "$wid" 1920 1080 || true
+    DISPLAY="$DISPLAY" xdotool windowmove "$wid" 0 -30 windowsize "$wid" 1920 1110 || true
     DISPLAY="$DISPLAY" xprop -id "$wid" -f _NET_WM_WINDOW_TYPE 32a -set _NET_WM_WINDOW_TYPE _NET_WM_WINDOW_TYPE_DESKTOP || true
     DISPLAY="$DISPLAY" xprop -id "$wid" -f _NET_WM_STATE 32a -set _NET_WM_STATE _NET_WM_STATE_STICKY || true
     DISPLAY="$DISPLAY" xdotool windowunmap "$wid" || true

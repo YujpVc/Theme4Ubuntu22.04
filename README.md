@@ -10,6 +10,7 @@
 - 扩展：`blur-my-shell`、`CoverflowAltTab`、`NetSpeed`、`OpenWeather`、`ubuntu-logo-panel`
 - 顶部栏最左侧：自定义 Ubuntu 图标，点击打开系统设置
 - 快捷键：`Win+Tab` / `Alt+Tab` 都走 Coverflow 切换效果
+- 壁纸：`Minimal-Mojave` 动态壁纸，按时间在白天/夜晚极简山景之间过渡
 
 ## 目录说明
 
@@ -17,7 +18,7 @@
 - `icons/`：WhiteSur、WhiteSur-light、WhiteSur-dark、McMojave-cursors
 - `extensions/`：当前使用的用户 GNOME Shell 扩展
 - `configs/`：Plank 自启动、GTK 覆盖样式、GNOME Shell 扩展外观 dconf
-- `wallpapers/`：当前桌面和锁屏壁纸
+- `wallpapers/`：静态壁纸与 `Minimal-Mojave/` 动态壁纸资源
 - `preview.png`：当前美化效果预览
 - `install.sh`：一键复制到新机器用户目录
 
@@ -28,6 +29,7 @@
 - GNOME Shell / GTK 主题
 - 图标主题和光标主题
 - 壁纸
+- Minimal-Mojave 动态壁纸
 - GTK 外观覆盖 CSS
 - GNOME Shell 外观扩展
 - Plank 自启动和视觉配置
@@ -88,5 +90,9 @@
 - 壁纸恢复：
 
   ```bash
-  gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/Tahoe/Tahoe-5k-dark.jpg"
+  gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed.xml"
   ```
+
+- Ubuntu 22.04 / GNOME 42 原生支持 XML 时间轴动态壁纸；`install.sh` 会把
+  `wallpapers/Minimal-Mojave/` 中的模板安装到用户目录并应用。资源来源：
+  `https://github.com/manishprivet/dynamic-gnome-wallpapers`

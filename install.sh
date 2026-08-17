@@ -38,6 +38,17 @@ mkdir -p "$HOME/.local/share/backgrounds/Tahoe"
 cp -a "$BASE/wallpapers/Tahoe-5k-dark.jpg" "$HOME/.local/share/backgrounds/Tahoe/"
 cp -a "$BASE/wallpapers/Blue_flower_by_Elena_Stravoravdi.jpg" "$HOME/.local/share/backgrounds/"
 
+echo "==> Install Minimal-Mojave dynamic wallpaper"
+mkdir -p "$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed"
+mkdir -p "$HOME/.local/share/gnome-background-properties"
+cp -a "$BASE/wallpapers/Minimal-Mojave/"*.jpeg "$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed/"
+sed "s+__LOCATION__+$HOME/.local/share+g" \
+    "$BASE/wallpapers/Minimal-Mojave/Minimal-Mojave-timed.xml" \
+    > "$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed.xml"
+sed "s+__LOCATION__+$HOME/.local/share+g" \
+    "$BASE/wallpapers/Minimal-Mojave/Minimal-Mojave.xml" \
+    > "$HOME/.local/share/gnome-background-properties/Minimal-Mojave.xml"
+
 echo "==> Apply dconf settings"
 dconf load /net/launchpad/plank/ < "$BASE/configs/dconf/plank-dconf.txt"
 dconf load /org/gnome/shell/extensions/ < "$BASE/configs/dconf/extensions-dconf.txt"
@@ -50,8 +61,8 @@ gsettings set org.gnome.desktop.interface icon-theme 'WhiteSur-dark'
 gsettings set org.gnome.desktop.interface cursor-theme 'McMojave-cursors'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
 gsettings set org.gnome.shell.extensions.user-theme name 'WhiteSur-Light-solid'
-gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/Tahoe/Tahoe-5k-dark.jpg"
-gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.local/share/backgrounds/Blue_flower_by_Elena_Stravoravdi.jpg"
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed.xml"
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.local/share/backgrounds/gnome/Minimal-Mojave-timed.xml"
 
 echo
 echo "Done. Restart GNOME Shell or log out/in to make it visible:"

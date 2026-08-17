@@ -4,6 +4,10 @@ set -u
 VIDEO="$HOME/.local/share/backgrounds/Minimal-Mojave-Live/Minimal-Mojave-live.mp4"
 export DISPLAY="${DISPLAY:-:1}"
 
+if DISPLAY="$DISPLAY" xdotool search --name 'Minimal-Mojave-Live' 2>/dev/null | head -n1 | grep -q .; then
+    exit 0
+fi
+
 ffplay -loop 0 -x 1920 -y 1080 -an -window_title 'Minimal-Mojave-Live' "$VIDEO" >/dev/null 2>&1 &
 ffplay_pid=$!
 
@@ -21,6 +25,7 @@ if [ -n "$wid" ]; then
     DISPLAY="$DISPLAY" xdotool windowunmap "$wid" || true
     sleep 0.2
     DISPLAY="$DISPLAY" xdotool windowmap "$wid" || true
+    DISPLAY="$DISPLAY" xdotool windowmove "$wid" 0 -30 windowsize "$wid" 1920 1110 || true
 fi
 
 wait "$ffplay_pid"

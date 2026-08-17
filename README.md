@@ -99,6 +99,6 @@
   `https://github.com/manishprivet/dynamic-gnome-wallpapers`
 
 - 若需要持续可见的动画，`install.sh` 还会安装
-  `tools/minimal-mojave-live.sh` 和登录自启动条目，使用 `ffplay` 播放
-  `Minimal-Mojave-live.mp4` 作为桌面层。当前该文件为哲风壁纸
-  “卡通-水面-治愈”，原始分辨率 `2850x1604`。
+  `tools/minimal-mojave-live.sh`、user systemd 服务和登录自启动条目，
+  使用 `ffplay` 播放 `Minimal-Mojave-live.mp4` 作为桌面层。当前该文件为
+  哲风壁纸“卡通-水面-治愈”，原始分辨率 `2850x1604`。

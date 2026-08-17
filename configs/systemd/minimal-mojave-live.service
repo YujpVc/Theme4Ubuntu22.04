@@ -1,0 +1,12 @@
+[Unit]
+Description=Minimal Mojave Live Wallpaper
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/minimal-mojave-live.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

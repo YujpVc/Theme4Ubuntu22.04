@@ -54,6 +54,10 @@ mkdir -p "$HOME/.local/share/backgrounds/Minimal-Mojave-Live" "$HOME/.local/bin"
 cp -a "$BASE/wallpapers/Minimal-Mojave/Minimal-Mojave-live.mp4" "$HOME/.local/share/backgrounds/Minimal-Mojave-Live/"
 cp -a "$BASE/tools/minimal-mojave-live.sh" "$HOME/.local/bin/"
 chmod +x "$HOME/.local/bin/minimal-mojave-live.sh"
+mkdir -p "$HOME/.config/systemd/user"
+cp -a "$BASE/configs/systemd/minimal-mojave-live.service" "$HOME/.config/systemd/user/"
+systemctl --user daemon-reload
+systemctl --user enable --now minimal-mojave-live.service || true
 sed "s+__HOME__+$HOME+g" \
     "$BASE/configs/autostart/minimal-mojave-live.desktop.in" \
     > "$HOME/.config/autostart/minimal-mojave-live.desktop"

@@ -49,6 +49,15 @@ sed "s+__LOCATION__+$HOME/.local/share+g" \
     "$BASE/wallpapers/Minimal-Mojave/Minimal-Mojave.xml" \
     > "$HOME/.local/share/gnome-background-properties/Minimal-Mojave.xml"
 
+echo "==> Install Minimal-Mojave live wallpaper"
+mkdir -p "$HOME/.local/share/backgrounds/Minimal-Mojave-Live" "$HOME/.local/bin"
+cp -a "$BASE/wallpapers/Minimal-Mojave/Minimal-Mojave-live.mp4" "$HOME/.local/share/backgrounds/Minimal-Mojave-Live/"
+cp -a "$BASE/tools/minimal-mojave-live.sh" "$HOME/.local/bin/"
+chmod +x "$HOME/.local/bin/minimal-mojave-live.sh"
+sed "s+__HOME__+$HOME+g" \
+    "$BASE/configs/autostart/minimal-mojave-live.desktop.in" \
+    > "$HOME/.config/autostart/minimal-mojave-live.desktop"
+
 echo "==> Apply dconf settings"
 dconf load /net/launchpad/plank/ < "$BASE/configs/dconf/plank-dconf.txt"
 dconf load /org/gnome/shell/extensions/ < "$BASE/configs/dconf/extensions-dconf.txt"

@@ -18,6 +18,7 @@
 - `icons/`：WhiteSur、WhiteSur-light、WhiteSur-dark、McMojave-cursors
 - `extensions/`：当前使用的用户 GNOME Shell 扩展
 - `configs/`：Plank 自启动、GTK 覆盖样式、GNOME Shell 扩展外观 dconf
+- `configs/applications/`：可选应用 Dock 启动/双图标修复脚本和说明，不随 `install.sh` 自动执行
 - `wallpapers/`：静态壁纸与 `Minimal-Mojave/` 动态壁纸资源
 - `preview.png`：当前美化效果预览
 - `install.sh`：一键复制到新机器用户目录
@@ -36,12 +37,26 @@
 - Plank 自启动和视觉配置
 - 桌面/锁屏壁纸、主题、图标、光标相关 gsettings
 
-不会安装或修改：
+`install.sh` 默认不会安装或修改：
 
 - Cursor 或其他第三方软件入口、图标、路径
 - Edge desktop 覆盖或默认浏览器
 - Plank / GNOME 固定应用列表
 - `appmenu-gtk-module` 等软件模块配置
+
+如果安装后 Edge/Terminator 在 Dock 出现双图标，或 ToDesk 从 Dock 无法唤出主窗口，可运行：
+
+```bash
+bash configs/applications/fix-dock-app-icons.sh all
+```
+
+也可以单独修复 ToDesk：
+
+```bash
+bash configs/applications/fix-dock-app-icons.sh todesk
+```
+
+具体排查说明见 `configs/applications/README.md`。
 
 ## 新机器安装步骤
 
@@ -102,3 +117,16 @@
   `tools/minimal-mojave-live.sh`、user systemd 服务和登录自启动条目，
   使用 `ffplay` 播放 `Minimal-Mojave-live.mp4` 作为桌面层。当前该文件为
   哲风壁纸“卡通-水面-治愈”，原始分辨率 `2850x1604`。
+
+- 动态壁纸由 user systemd 服务管理，服务名为
+  `minimal-mojave-live.service`：
+
+  ```bash
+  systemctl --user enable --now minimal-mojave-live.service
+  systemctl --user status minimal-mojave-live.service
+  systemctl --user restart minimal-mojave-live.service
+  systemctl --user stop minimal-mojave-live.service
+  ```
+
+- 登录自启动 `~/.config/autostart/minimal-mojave-live.desktop` 是同一脚本的
+  兜底入口；脚本会检测已有 `Minimal-Mojave-Live` 窗口，避免重复播放。

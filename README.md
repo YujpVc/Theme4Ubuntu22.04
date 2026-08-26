@@ -10,7 +10,7 @@
 - 扩展：`blur-my-shell`、`CoverflowAltTab`、`NetSpeed`、`OpenWeather`、`ubuntu-logo-panel`
 - 顶部栏最左侧：自定义 Ubuntu 图标，点击打开系统设置
 - 快捷键：`Win+Tab` / `Alt+Tab` 都走 Coverflow 切换效果
-- 壁纸：哲风壁纸“卡通-水面-治愈”视频动态壁纸，循环播放
+- 壁纸：哲风壁纸“卡通-水面-治愈”视频动态壁纸；默认安装但不随开机自启动
 
 ## 目录说明
 
@@ -31,7 +31,7 @@
 - 图标主题和光标主题
 - 壁纸
 - Minimal-Mojave 动态壁纸
-- Minimal-Mojave live 视频壁纸与登录自启动
+- Minimal-Mojave live 视频壁纸（默认不自启动）
 - GTK 外观覆盖 CSS
 - GNOME Shell 外观扩展
 - Plank 自启动和视觉配置
@@ -113,20 +113,26 @@ bash configs/applications/fix-dock-app-icons.sh todesk
   `wallpapers/Minimal-Mojave/` 中的模板安装到用户目录并应用。资源来源：
   `https://github.com/manishprivet/dynamic-gnome-wallpapers`
 
-- 若需要持续可见的动画，`install.sh` 还会安装
-  `tools/minimal-mojave-live.sh`、user systemd 服务和登录自启动条目，
-  使用 `ffplay` 播放 `Minimal-Mojave-live.mp4` 作为桌面层。当前该文件为
-  哲风壁纸“卡通-水面-治愈”，原始分辨率 `2850x1604`。
+- `install.sh` 会安装 `tools/minimal-mojave-live.sh` 和 user systemd 服务，
+  但默认不自启动，也不写登录自启动条目。当前该文件为哲风壁纸“卡通-水面-治愈”，
+  原始分辨率 `2850x1604`；当前 `ffplay` 软件解码方案常驻播放会持续占用较高 CPU。
 
 - 动态壁纸由 user systemd 服务管理，服务名为
   `minimal-mojave-live.service`：
 
   ```bash
-  systemctl --user enable --now minimal-mojave-live.service
+  systemctl --user start minimal-mojave-live.service
   systemctl --user status minimal-mojave-live.service
   systemctl --user restart minimal-mojave-live.service
   systemctl --user stop minimal-mojave-live.service
   ```
 
-- 登录自启动 `~/.config/autostart/minimal-mojave-live.desktop` 是同一脚本的
-  兜底入口；脚本会检测已有 `Minimal-Mojave-Live` 窗口，避免重复播放。
+  如需恢复开机自启动：
+
+  ```bash
+  systemctl --user enable --now minimal-mojave-live.service
+  ```
+
+- `install.sh` 默认不写登录自启动
+  `~/.config/autostart/minimal-mojave-live.desktop`；
+  脚本会检测已有 `Minimal-Mojave-Live` 窗口，避免重复播放。

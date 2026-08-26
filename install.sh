@@ -57,10 +57,6 @@ chmod +x "$HOME/.local/bin/minimal-mojave-live.sh"
 mkdir -p "$HOME/.config/systemd/user"
 cp -a "$BASE/configs/systemd/minimal-mojave-live.service" "$HOME/.config/systemd/user/"
 systemctl --user daemon-reload
-systemctl --user enable --now minimal-mojave-live.service || true
-sed "s+__HOME__+$HOME+g" \
-    "$BASE/configs/autostart/minimal-mojave-live.desktop.in" \
-    > "$HOME/.config/autostart/minimal-mojave-live.desktop"
 
 echo "==> Apply dconf settings"
 dconf load /net/launchpad/plank/ < "$BASE/configs/dconf/plank-dconf.txt"
@@ -80,3 +76,6 @@ gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.local
 echo
 echo "Done. Restart GNOME Shell or log out/in to make it visible:"
 echo "  kill -HUP \$(pgrep -x gnome-shell | head -1)"
+echo
+echo "Live wallpaper is installed but disabled by default:"
+echo "  systemctl --user start minimal-mojave-live.service"
